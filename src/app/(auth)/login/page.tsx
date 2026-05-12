@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { Eye, EyeOff, Loader2, LogIn } from "lucide-react";
 import { loginSchema, type LoginInput } from "@/lib/validations/auth";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
@@ -49,12 +49,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-white">Welcome back</h1>
-        <p className="text-slate-400">Sign in to your TaskWiz account</p>
-      </div>
-
+    <>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Email */}
         <div className="space-y-2">
@@ -130,6 +125,21 @@ export default function LoginPage() {
           Sign up free
         </Link>
       </p>
+    </>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <div className="space-y-8">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold text-white">Welcome back</h1>
+        <p className="text-slate-400">Sign in to your TaskWiz account</p>
+      </div>
+
+      <Suspense fallback={<div className="flex justify-center py-8"><Loader2 className="animate-spin text-indigo-500" /></div>}>
+        <LoginForm />
+      </Suspense>
     </div>
   );
 }
