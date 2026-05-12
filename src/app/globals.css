@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: 0 0% 100%;
+  --color-foreground: 222 47% 11%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222 47% 11%;
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 222 47% 11%;
+  --color-primary: 239 84% 67%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 210 40% 96%;
+  --color-secondary-foreground: 222 47% 11%;
+  --color-muted: 210 40% 96%;
+  --color-muted-foreground: 215 16% 47%;
+  --color-accent: 210 40% 96%;
+  --color-accent-foreground: 222 47% 11%;
+  --color-destructive: 0 84% 60%;
+  --color-destructive-foreground: 0 0% 100%;
+  --color-border: 214 32% 91%;
+  --color-input: 214 32% 91%;
+  --color-ring: 239 84% 67%;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --color-background: 222 47% 5%;
+  --color-foreground: 210 40% 98%;
+  --color-card: 222 47% 8%;
+  --color-card-foreground: 210 40% 98%;
+  --color-popover: 222 47% 8%;
+  --color-popover-foreground: 210 40% 98%;
+  --color-primary: 239 84% 67%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 217 33% 17%;
+  --color-secondary-foreground: 210 40% 98%;
+  --color-muted: 217 33% 17%;
+  --color-muted-foreground: 215 20% 65%;
+  --color-accent: 217 33% 17%;
+  --color-accent-foreground: 210 40% 98%;
+  --color-destructive: 0 63% 31%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 217 33% 17%;
+  --color-input: 217 33% 17%;
+  --color-ring: 239 84% 67%;
+}
+
+* {
+  border-color: hsl(var(--color-border));
+}
+
+body {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--color-border));
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--color-muted-foreground) / 0.5);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: hsl(var(--color-card) / 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--color-border));
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Kanban drag ghost */
+.kanban-ghost {
+  opacity: 0.4;
+  border: 2px dashed hsl(var(--color-primary));
+}
+
+/* Smooth page transitions */
+.page-enter {
+  animation: fadeSlideIn 0.3s ease;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Priority dot pulse */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
