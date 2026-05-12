@@ -10,10 +10,11 @@ export default auth((req) => {
     pathname === "/" ||
     pathname.startsWith("/login") ||
     pathname.startsWith("/signup") ||
-    pathname.startsWith("/api/auth");
+    pathname.startsWith("/api/auth") ||
+    pathname === "/api/health";
 
   // API routes protection
-  if (pathname.startsWith("/api/") && !pathname.startsWith("/api/auth")) {
+  if (pathname.startsWith("/api/") && !pathname.startsWith("/api/auth") && pathname !== "/api/health") {
     if (!isLoggedIn) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
