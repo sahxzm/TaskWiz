@@ -12,11 +12,11 @@ TaskWiz is a full-stack SaaS application designed for seamless team collaboratio
 
 ## 📸 Screenshots
 
+### Landing page
+![Kanban Board](public/screenshot/landing-page.png)
+
 ### Dashboard
 ![Dashboard](public/screenshot/dashboard.png)
-
-### Kanban Board
-![Kanban Board](public/screenshot/landing-page.png)
 
 ### Login Page
 ![Login Page](public/screenshot/login-page.png)
